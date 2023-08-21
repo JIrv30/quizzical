@@ -1,0 +1,11 @@
+body {
+  font-family: 'Karla';
+  margin: 0;
+  background-color: #DEEBF8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+

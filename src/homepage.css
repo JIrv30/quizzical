@@ -1,0 +1,33 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 1fr;
+  height: 100vh;
+
+}
+
+.header {
+  font-size: 32px;
+  font-weight: 700;
+  color: #293264;
+  margin-bottom: 0;
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 400;
+  color: #293264;
+  margin-bottom: 30px;
+}
+
+.start-quiz-button {
+  background-color: #4D5B9E;
+  border-radius: 15px;
+  border: none;
+  color: #F5F7FB;
+  font-size: 16px;
+  width: 195px;
+  height: 52px;
+}
