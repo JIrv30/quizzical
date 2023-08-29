@@ -10,6 +10,10 @@ import './App.css'
 
 function App() {
   const [questions, setQuestions] = useState([])
+  // const [selectedAnswer, setSelectedAnswer] = useState(null)
+  const [count, setCount] = useState(0)
+  const [checked, setChecked] = useState(false)
+  const [playAgain, setPlayAgain] = useState(false)
 
 
   const shuffleArray = (arr) => arr.sort(()=>Math.random()-0.5)
@@ -33,26 +37,86 @@ function App() {
       })
     }
     getQuestion()
-  },[])
+  },[playAgain])
 
-  console.log(questions)
+  function handleSelectAnswer (id, answer) {
+    setQuestions(questions => questions.map(question =>{
+      return question.id === id ? 
+      {...question,
+      selected: answer} :
+      question
+
+    }))
+    
+  }
+
+  function selectAnswer (answer) {
+    setSelectedAnswer(answer)
+    handleSelectAnswer(questions.id, answer)
+  }
+
+  function checkCorrect () {
+    let newCount = 0
+    questions.forEach(question => {
+      if(question.correct === question.selected) {
+        newCount += 1
+      }
+    })
+    setCount(newCount)
+    setChecked(true)
+  }
+
+  function handlePlayAgain () {
+    setPlayAgain(true)
+    setCount(0)
+    setChecked(false)
+    setPlayAgain(false)
+  }
 
   const questionElements = questions.map(item => {
     return <Questions
     key = {item.id}
     id = {item.id}
     setup = {item}
-
+    handleSelectAnswer = {handleSelectAnswer}
     />
   })
 
+  const questionCorrect = questions.map(item => {
+    return <Answers
+    key = {item.id}
+    id = {item.id}
+    setup = {item}
+    handleSelectAnswer = {handleSelectAnswer}
+    />
+  })
 
+  // const answerElements = questions.answers.map(answer => {
+  //   const isSelected = answer === selectedAnswer
+  //   const styles = {
+  //     backgroundColor: isSelected ? '#D6DBF5' : 'transparent'
+  //   }
+  //   return (
+  //     <button
+  //     key = {nanoid()}
+  //     style = {styles}
+  //     className = 'answer-button'
+  //     onClick = {() =>selectAnswer(answer)}
+  //     > {decode(answer)}
+  //     </button>)
+  //   })
   
   return (
     <>
       {/* <Homepage/> */}
-      {questionElements}
-      {/* {answerElements} */}
+      {checked ? questionCorrect : questionElements}
+      <button 
+      className='check-button'
+      onClick = {checked ? handlePlayAgain : checkCorrect}
+      >
+      {checked ? 'Play Again?' : 'Check Answers'}
+      </button>
+      {checked && <p className='score'>You scored {count} out of {questions.length}</p>}
     </>
   )
 }
