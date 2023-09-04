@@ -14,6 +14,9 @@ function Questions (props) {
     props.handleSelectAnswer(props.id, answer)
   }
 
+   
+  
+  
   const answerElements = props.setup.answers.map(answer => {
     const isSelected = answer === selectedAnswer
     const styles = {

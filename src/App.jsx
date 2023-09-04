@@ -4,13 +4,11 @@ import { decode, decodeEntity } from 'html-entities';
 import {nanoid} from 'nanoid'
 import Homepage from './Homepage'
 import Questions from './Questions'
-import Answers from './Answers'
 
 import './App.css'
 
 function App() {
   const [questions, setQuestions] = useState([])
-  // const [selectedAnswer, setSelectedAnswer] = useState(null)
   const [count, setCount] = useState(0)
   const [checked, setChecked] = useState(false)
   const [playAgain, setPlayAgain] = useState(false)
@@ -79,37 +77,15 @@ function App() {
     id = {item.id}
     setup = {item}
     handleSelectAnswer = {handleSelectAnswer}
+    checked = {checked}
     />
   })
 
-  const questionCorrect = questions.map(item => {
-    return <Answers
-    key = {item.id}
-    id = {item.id}
-    setup = {item}
-    handleSelectAnswer = {handleSelectAnswer}
-    />
-  })
-
-  // const answerElements = questions.answers.map(answer => {
-  //   const isSelected = answer === selectedAnswer
-  //   const styles = {
-  //     backgroundColor: isSelected ? '#D6DBF5' : 'transparent'
-  //   }
-  //   return (
-  //     <button
-  //     key = {nanoid()}
-  //     style = {styles}
-  //     className = 'answer-button'
-  //     onClick = {() =>selectAnswer(answer)}
-  //     > {decode(answer)}
-  //     </button>)
-  //   })
   
   return (
     <>
       {/* <Homepage/> */}
-      {checked ? questionCorrect : questionElements}
+      {questionElements}
       <button 
       className='check-button'
       onClick = {checked ? handlePlayAgain : checkCorrect}

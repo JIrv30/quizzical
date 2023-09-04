@@ -1,42 +1,37 @@
-import React from "react";
-import { useState } from "react";
+// import React from "react";
+// import { useState } from "react";
 
-function Answers (props) {
+// function Answers (props) {
   
-  const [correctAnswer, setCorrectAnswer] = useState(null)
+//   const [correctAnswer, setCorrectAnswer] = useState(null)
   
 
-  function selectAnswer (answer) {
-    setSelectedAnswer(answer)
-    props.handleSelectAnswer(props.id, answer)
-  }
-
-  const answerElements = props.setup.answers.map(answer => {
-    const isSelected = answer === selectedAnswer
-    const styles = {
-      backgroundColor: isSelected ? '#D6DBF5' : 'transparent'
-    }
+//   const answerElements = props.setup.answers.map(answer => {
+//     const iscorrect = answer === selectedAnswer
+//     const styles = {
+//       backgroundColor: iscorrect ? '#94D7A2' : 'transparent'
+//     }
     
-    return (
-    <button
-    key = {nanoid()}
-    style = {styles}
-    className = 'answer-button'
-    onClick = {() =>selectAnswer(answer)}
-    > {decode(answer)}
-    </button>)
-  })
+//     return (
+//     <button
+//     key = {nanoid()}
+//     style = {styles}
+//     className = 'answer-button'
+//     onClick = {() =>selectAnswer(answer)}
+//     > {decode(answer)}
+//     </button>)
+//   })
     
-  return (
-    <div className="question-container">
-      <h2
-      className="question-title"
-      >{decode(props.setup.question)}</h2>
-      {answerElements}
+//   return (
+//     <div className="question-container">
+//       <h2
+//       className="question-title"
+//       >{decode(props.setup.question)}</h2>
+//       {answerElements}
 
-    </div>
-  )
+//     </div>
+//   )
 
-}
+// }
 
-export default Answers
+// export default Answers
