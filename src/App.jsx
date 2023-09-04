@@ -37,6 +37,8 @@ function App() {
     getQuestion()
   },[playAgain])
 
+  
+
   function handleSelectAnswer (id, answer) {
     setQuestions(questions => questions.map(question =>{
       return question.id === id ? 
@@ -66,10 +68,14 @@ function App() {
 
   function handlePlayAgain () {
     setPlayAgain(true)
+    console.log(playAgain)
     setCount(0)
     setChecked(false)
-    setPlayAgain(false)
+    // setPlayAgain(prevPlayAgain => !prevPlayAgain)
+    // console.log(playAgain)
   }
+
+  
 
   const questionElements = questions.map(item => {
     return <Questions
