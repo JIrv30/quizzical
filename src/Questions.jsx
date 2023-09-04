@@ -19,9 +19,20 @@ function Questions (props) {
   
   const answerElements = props.setup.answers.map(answer => {
     const isSelected = answer === selectedAnswer
-    const styles = {
-      backgroundColor: isSelected ? '#D6DBF5' : 'transparent'
+    const isSelectedCorrect = selectedAnswer === props.setup.correct
+    const isCoreect = answer === props.setup.correct
+    let styles
+
+    if(props.checked){
+      styles = {backgroundColor: isSelectedCorrect ? '#94D7A2' : '#F8BCBC'}
     }
+    else {
+      styles = {backgroundColor : isSelected ?'#D6DBF5' : 'transparent'}
+    }
+    
+    // const styles = {
+    //   backgroundColor: isSelected ? '#D6DBF5' : 'transparent'
+    // }
     
     return (
     <button
