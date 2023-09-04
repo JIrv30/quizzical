@@ -20,11 +20,15 @@ function Questions (props) {
   const answerElements = props.setup.answers.map(answer => {
     const isSelected = answer === selectedAnswer
     const isSelectedCorrect = isSelected && selectedAnswer === props.setup.correct;
-    // const isCoreect = answer === props.setup.correct
+    const isSelectedIncorrect = isSelected && selectedAnswer != props.setup.correct;
+    
     let styles
 
     if(props.checked){
-      styles = {backgroundColor: isSelectedCorrect ? '#94D7A2' : 'transparent'}
+      if(isSelectedCorrect){
+        styles = {backgroundColor: isSelectedCorrect ? '#94D7A2' : 'transparent'}}
+      else {styles = {backgroundColor: isSelectedIncorrect ? '#F8BCBC' : 'transparent'}}
+
     }
     else {
       styles = {backgroundColor : isSelected ?'#D6DBF5' : 'transparent'}
