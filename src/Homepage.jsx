@@ -1,12 +1,15 @@
-import React from "react";
+
 import './homepage.css'
-function Homepage () {
+function Homepage (props) {
 
   return (
     <div className="main">
       <h1 className="header">Quizzical</h1>
       <p className="description">Test your general knowledge skills</p>
-      <button className="start-quiz-button"> Start Quiz</button>
+      <button 
+      className="start-quiz-button"
+      onClick = {()=>props.start()}
+      > Start Quiz</button>
     </div>
   )
 }

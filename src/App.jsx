@@ -4,14 +4,16 @@ import { decode, decodeEntity } from 'html-entities';
 import {nanoid} from 'nanoid'
 import Homepage from './Homepage'
 import Questions from './Questions'
+import blob1 from './assets/blob1.svg'
+import blob2 from './assets/blob2.svg'
 
-import './App.css'
 
 function App() {
   const [questions, setQuestions] = useState([])
   const [count, setCount] = useState(0)
   const [checked, setChecked] = useState(false)
   const [playAgain, setPlayAgain] = useState(false)
+  const [started, setStarted] = useState(false)
 
 
   const shuffleArray = (arr) => arr.sort(()=>Math.random()-0.5)
@@ -71,8 +73,11 @@ function App() {
     console.log(playAgain)
     setCount(0)
     setChecked(false)
-    // setPlayAgain(prevPlayAgain => !prevPlayAgain)
-    // console.log(playAgain)
+    
+  }
+
+  function start () {
+    setStarted(prevState=>!prevState)
   }
 
   
@@ -90,15 +95,35 @@ function App() {
   
   return (
     <>
-      {/* <Homepage/> */}
-      {questionElements}
-      <button 
-      className='check-button'
-      onClick = {checked ? handlePlayAgain : checkCorrect}
-      >
-      {checked ? 'Play Again?' : 'Check Answers'}
-      </button>
-      {checked && <p className='score'>You scored {count} out of {questions.length}</p>}
+    <div className='main-container'>
+      <div className='content-container'>
+        {started ? 
+          <div>
+            
+            {questionElements}
+            
+            <button 
+            className='check-button'
+            onClick = {checked ? handlePlayAgain : checkCorrect}
+            >
+            {checked ? 'Play Again?' : 'Check Answers'}
+            </button>
+            
+            {checked && <p className='score'>You scored {count} out of {questions.length}</p>}
+          </div>
+          :
+          <Homepage start={start} />
+      }
+      </div>
+
+        <div className='blob1'>
+          <img className='left' src={blob1} />
+        </div>
+      
+        <div className='blob2'>
+        <img className='left' src={blob2} />
+      </div>
+    </div>
     </>
   )
 }

@@ -34,9 +34,7 @@ function Questions (props) {
       styles = {backgroundColor : isSelected ?'#D6DBF5' : 'transparent'}
     }
     
-    // const styles = {
-    //   backgroundColor: isSelected ? '#D6DBF5' : 'transparent'
-    // }
+    
     
     return (
     <button
